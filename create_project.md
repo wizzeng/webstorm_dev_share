@@ -1,4 +1,4 @@
-# Webstorm 智能跳转分享 / 搭建脚手架
+# Webstorm 下的 Webpack 配置提示 & 外部资源跳转
 
 [示例源码](https://github.com/wizzeng/webpack_vue_bundle)
 
