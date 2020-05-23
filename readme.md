@@ -46,3 +46,4 @@ git clone git@github.com:wizzeng/webstorm_dev_share.git
 
 ## 章节
 
+- [1 - Webstorm 下的 Webpack 配置提示 & 外部资源跳转](create_project.md)
