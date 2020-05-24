@@ -184,6 +184,35 @@ Webstorm 分析 Webpack 时会知晓这一点，在 main 中使用 fake_jQuery �
 
 ![Webstorm 分析 Vendor](pic/create_project/vendor_call.gif)
 
+## Webpack Alias
+
+许多框架提供的脚手架（如 Vue），都会配置有 [`Webpack resolver alias`](https://webpack.js.org/configuration/resolve/#resolvealias)，即路径别名。拿 Vue Cli3 来举例，它会将 `@` 路径映射至项目路径的 `src` 目录，即在任意层级目录使用 `@` 来 `import`，都会取到 `src` 文件夹下的对应文件。
+
+Webstorm 同样提供了对 `Webpack Alias` 的解析支持，能够提供 alias 路径下的提示和跳转功能。进行如下配置：
+
+```javascript
+// webpack.config.js
+resolve: {
+    alias: {
+        '@': path.resolve(__dirname, '../src')
+    }
+}
+```
+
+创建 `src/utils.js` 用于导入：
+
+```javascript
+export const utils = {
+    getCurrentTime() {
+        return Date.now().toString();
+    }
+}
+```
+
+这时，如果前面配置 Webstorm 的 Webpack 配置文件路径正确，在 `src/index.js` 下 `import` `utils.js`，将获得补全和跳转功能。
+
+![Webstorm 分析 alias](pic/create_project/alias_jump.gif)
+
 ## Link 依赖跳转
 
 上述的 Vendor 打包方式一般只在给出未打包文件时采用，一般情况下给出的 UMD 包都会经过打包压缩，并发布在 CDN 上。如 JQuery 和 lodash。某些框架如 Bootstrap 还会要求引入外联 CSS。对于此类 link 资源，Webstorm 也可以很好地进行分析，并给出提示（深度打包并大量混入的包可能会无法正确分析）。
@@ -199,7 +228,6 @@ Webstorm 分析 Webpack 时会知晓这一点，在 main 中使用 fake_jQuery �
 同样的，外联 CSS 样式也能够得到支持，也能够提供对应的 CSS 提示和跳转。这里我引入 [purecss](https://purecss.io/start/) 这个 UI 库，并放置了对应的 [Button 样式](https://purecss.io/buttons/) 来演示：
 
 ![外联 CSS Class 提示跳转](pic/create_project/link_css.gif)
-
 
 ## 后记
 
