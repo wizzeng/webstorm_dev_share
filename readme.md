@@ -39,6 +39,10 @@
 
 - [1 - Webstorm 下的 Webpack 配置提示 & 外部资源跳转](create_project.md)
 
+### 番外
+
+- [在 Webstorm 中愉快使用 WSL 开发 Node 应用](ws_wsl.md)
+
 ## Enjoy ✌️
 
 让我们开始吧！
